@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/telegram-alert-bot.svg)](https://pypi.org/project/telegram-alert-bot/)
 [![Python versions](https://img.shields.io/pypi/pyversions/telegram-alert-bot.svg)](https://pypi.org/project/telegram-alert-bot/)
-[![License](https://img.shields.io/github/license/pudjo_jotaro/telegram-alert-bot)](https://github.com/pudjo_jotaro/telegram-alert-bot/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/pudjojotaro/telegram-alert-bot)](https://github.com/pudjojotaro/telegram-alert-bot/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/telegram-alert-bot)](https://pypi.org/project/telegram-alert-bot/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
