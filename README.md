@@ -1,5 +1,11 @@
 # Telegram Alert Bot
 
+[![PyPI version](https://img.shields.io/pypi/v/telegram-alert-bot.svg)](https://pypi.org/project/telegram-alert-bot/)
+[![Python versions](https://img.shields.io/pypi/pyversions/telegram-alert-bot.svg)](https://pypi.org/project/telegram-alert-bot/)
+[![License](https://img.shields.io/github/license/yourusername/telegram-alert-bot)](https://github.com/yourusername/telegram-alert-bot/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/telegram-alert-bot)](https://pypi.org/project/telegram-alert-bot/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 A simple asynchronous Telegram bot for sending alerts and notifications with message queuing capabilities.
 
 ## Features
