@@ -91,6 +91,79 @@ endLine: 31
    - Automatically adds bot mention in format `@bot`
    - Messages are processed in FIFO order
 
+## Message Merging
+
+The bot supports optional message merging functionality, which allows you to combine consecutive messages that match a specific pattern. This is particularly useful for status updates or repeated notifications.
+
+### Basic Message Merging Setup
+
+```python
+from telegram_alert_bot import TelegramAlertBot
+import asyncio
+
+# Initialize bot with message merging enabled
+bot = TelegramAlertBot(
+    token="YOUR_BOT_TOKEN",
+    user_id="YOUR_TELEGRAM_USER_ID",
+    merge_pattern="No profitable items found between"
+)
+
+async def main():
+    polling_task = asyncio.create_task(bot.background_bot_polling())
+    
+    # These messages will be merged if sent consecutively
+    await bot.event_trigger(
+        "No profitable items found between 2024-01-01 10:00:00 and 2024-01-01 10:15:00.",
+        "status_bot"
+    )
+    await bot.event_trigger(
+        "No profitable items found between 2024-01-01 10:15:00 and 2024-01-01 10:30:00.",
+        "status_bot"
+    )
+    
+    # Result in chat will be:
+    # "No profitable items found between 2024-01-01 10:00:00 and 2024-01-01 10:30:00."
+    # "@status_bot"
+    
+    await bot.message_queue.join()
+
+asyncio.run(main())
+```
+
+### Message Merging Behavior
+
+1. **Pattern Matching**: Only messages that start with the specified `merge_pattern` will be considered for merging.
+
+2. **Consecutive Messages**: Merging only occurs for consecutive messages. If other messages appear in between, the merge chain breaks.
+
+3. **Time Extraction**: The bot automatically extracts and combines time ranges from messages.
+
+### Advanced Usage Examples
+
+#### Custom Pattern Merging
+
+```python
+# Initialize with custom pattern
+bot = TelegramAlertBot(
+    token="YOUR_BOT_TOKEN",
+    user_id="YOUR_TELEGRAM_USER_ID",
+    merge_pattern="Status update:"
+)
+
+async def main():
+    polling_task = asyncio.create_task(bot.background_bot_polling())
+    
+    # These messages will be merged
+    await bot.event_trigger("Status update: System check at 09:00", "system_bot")
+    await bot.event_trigger("Status update: System check at 10:00", "system_bot")
+    
+    # This message won't be merged (different pattern)
+    await bot.event_trigger("Alert: New user registered", "system_bot")
+    
+    await bot.message_queue.join()
+```
+
+
 ## Error Handling
 
 The bot includes built-in error handling for Telegram API communications. All errors are logged using Python's logging module. Error handling implementation can be found in:
@@ -128,3 +201,4 @@ For support, please open an issue in the GitHub repository.
 
 pudjo_jotaro 
 https://github.com/pudjojotaro
+
