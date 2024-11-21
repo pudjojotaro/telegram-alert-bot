@@ -15,6 +15,7 @@ A simple asynchronous Telegram bot for sending alerts and notifications with mes
 - Error handling for Telegram API communications
 - Support for mentioning other bots in messages
 - Logging functionality
+- Optional message merging based on a specified pattern
 
 ## Installation
 
@@ -71,9 +72,10 @@ endLine: 31
 
 ##### Methods
 
-1. `__init__(token: str, user_id: str)`
+1. `__init__(token: str, user_id: str, merge_pattern: str = None)`
    - `token`: Your Telegram bot token
    - `user_id`: The Telegram user ID to send messages to
+   - `merge_pattern`: Optional string to detect messages for merging
 
 2. `async send_telegram_message(message: str)`
    - Sends a message directly to the specified user
