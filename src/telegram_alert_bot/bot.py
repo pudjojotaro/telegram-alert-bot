@@ -25,7 +25,7 @@ class TelegramAlertBot:
                     # Create merged message
                     merged_message = f"{self.merge_pattern} {last_start_time} and {current_end_time}."
                     if "@" in message:
-                        merged_message += f"\n{message.split('\n')[1]}"
+                        merged_message += "\n" + message.split("\n")[1]
                     
                     # Edit the last message instead of sending a new one
                     await bot.edit_message_text(
