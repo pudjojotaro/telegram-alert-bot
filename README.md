@@ -183,7 +183,7 @@ The bot uses Python's built-in logging module to track:
 
 ## Version
 
-Current version: 0.1.0
+Current version: 0.2.1
 
 ## Contributing
 
